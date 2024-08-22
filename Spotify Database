@@ -1,0 +1,44 @@
+#For this project I downloaded a data for Spotify, 
+#created a table with the data,
+#then I asked some questions and used SQL to find answers.
+
+#Create the table:
+create table BIT_DB.SpotifyData (
+id integer primary key,
+artist_name varchar not null,
+track_name varchar not null,
+track_id varchar not null,
+popularity integer not null,
+danceability decimal(4,3) not null,
+energy decimal(4,3) not null,
+song_key integer not null,
+loudness decimal(5,3) not null,
+song_mode integer not null,
+speechiness decimal(5,4) not null,
+acousticness decimal(6,5) not null,
+instramentalness decimal(8,7) not null,
+liveness decimal(5,4) not null,
+valence decimal(4,3) not null,
+tempo decimal(6,3) not null,
+duration_ms integer not null,
+time_signature integer not null )
+
+#Here I inserted the data .csv into the table.
+
+#Finally, I asked some questions:
+#What are the top ten most popular songs in Spotify?
+select track_name,artist_name,popularity
+from BIT_DB.SpotifyData
+order by popularity desc
+limit 10;
+
+#What are the top ten most danceable songs?
+select track_name,artist_name,danceability
+from BIT_DB.SpotifyData
+order by danceability desc
+limit 10;
+
+#What is the longest song in the top 50?
+select track_name,artist_name,duration_ms
+from BIT_DB.SpotifyData
+order by duration_ms desc;
