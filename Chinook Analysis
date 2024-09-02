@@ -5,23 +5,29 @@
 #1. Which customers are from Germany?
 select FirstName,LastName,CustomerId,Country
 from chinook.customers
-where country="Germany"
+where country="Germany";
 
 #2. Which employees have a job title that is not "Manager"?
 select FirstName,LastName,EmployeeId,Title
 from chinook.employees
-where Title!="Manager"
+where Title!="Manager";
 
 #3. Which customers are from the United States, and what are their postal codes?
 select FirstName,LastName,State,PostalCode
 from chinook.customers
-where Country="USA"
+where Country="USA";
 
 #The following questions are the example questions given with the database:
 
 #1. Show Customers (their full names, customer ID, and country) who are not in the US.
+select FirstName,LastName,CustomerId,Country
+from chinook.customers
+where Country !="USA";
 
 #2. Show only the Customers from Brazil.
+select FirstName,LastName,CustomerId,Country
+from chinook.customers
+where Country="Brazil";
 
 #3. Find the Invoices of customers who are from Brazil. The resulting table should show the customer's full name, Invoice ID, Date of the invoice, and billing country.
 
