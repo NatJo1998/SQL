@@ -40,10 +40,17 @@ join customers c on i.CustomerId=c.CustomerId
 where c.Country='Brazil';
 
 #4. Show the Employees who are Sales Agents.
+select *
+from employees
+where Title='Sales Support Agent';
 
 #5. Find a unique/distinct list of billing countries from the Invoice table.
+select distict BillingCountry
+from invoices
+order by BillingCountry asc;
 
 #6. Provide a query that shows the invoices associated with each sales agent. The resulting table should include the Sales Agent's full name.
+
 
 #7. Show the Invoice Total, Customer name, Country, and Sales Agent name for all invoices and customers.
 
