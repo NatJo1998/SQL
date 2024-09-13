@@ -50,13 +50,44 @@ from invoices
 order by BillingCountry asc;
 
 #6. Provide a query that shows the invoices associated with each sales agent. The resulting table should include the Sales Agent's full name.
-
+select
+    e.FirstName||' '||e.LastName as SalesAgentFullName,
+    c.FirstName||' '||c.LastName as CustomerFullName,
+    i.InvoiceId,
+    i.InvoiceDate,
+    i.BillingAddress,
+    i.BillingCity,
+    i.BillingState,
+    i.BillingCountry,
+    i.Total
+from invoices i
+join customers c on i.CustomerId=c.CustomerId
+join employees e on c.SupportRepId=e.EmployeeId
+order by e.LastName,e.FirstName;
 
 #7. Show the Invoice Total, Customer name, Country, and Sales Agent name for all invoices and customers.
+select 
+    i.Total as InvoiceTotal,
+    c.FirstName||' '||c.LastName as CustomerName,
+    c.Country as CustomerCountry,
+    e.FirstName||' '||e.LastName as SalesAgentName
+from invoices i
+join customers c on i.CustomerId=c.CustomerId
+join employees e on c.SupportRepId=e.EmployeeId
+order by c.LastName,c.FirstName;
 
 #8. How many Invoices were there in 2009?
+select count(*) as InvoiceCount
+from invoices
+where InvoiceDate>='2009-01-01'
+and InvoiceDate<'2010-01-01';
 
 #9. What are the total sales for 2009?
+select sum(ii.Quantity) as TotalSales
+from invoice_items ii
+join invocies i on ii.InvoiceId=i.InvoiceId
+where i.InvoiceDate>='2009-01-01'
+and i.InvoiceDate<'2010-01-01';
 
 #10. Write a query that includes the purchased track name with each invoice line ID.
 
