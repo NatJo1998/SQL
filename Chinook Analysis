@@ -90,8 +90,14 @@ where i.InvoiceDate>='2009-01-01'
 and i.InvoiceDate<'2010-01-01';
 
 #10. Write a query that includes the purchased track name with each invoice line ID.
+select invoice_items.InvoiceId,tracks.Name as TrackName
+from invoice_items
+join tracks on invoice_items.TrackId=tracks.TrackId;
 
 #11. Write a query that includes the purchased track name AND artist name with each invoice line ID.
+select invoice_items.InvoiceId,tracks.Name as TrackName,Composer
+from invoice_items
+join tracks on invoice_items.TrackId=tracks.TrackId;
 
 #12. Provide a query that shows all the Tracks, and include the Album name, Media type, and Genre.
 
